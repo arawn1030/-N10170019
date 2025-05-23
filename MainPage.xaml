@@ -1,0 +1,102 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NumberSearchApp.MainPage"
+             Title="">
+
+    <Grid>
+
+        <!-- 上方兩個並排的按鈕 -->
+        <HorizontalStackLayout HorizontalOptions="End"
+                           VerticalOptions="Start"
+                           Padding="10"
+                           Spacing="10"
+                           ZIndex="1">
+            <Button Text="出"
+                FontAttributes="Bold"
+                FontSize="16"
+                BackgroundColor="#9E9E9E"
+                TextColor="White"
+                Clicked="OnLogoutClicked"
+                WidthRequest="40" />
+
+            <Button Text="3"
+                FontAttributes="Bold"
+                FontSize="18"
+                BackgroundColor="#4CAF50"
+                TextColor="White"
+                Clicked="OnGoToSimulationClicked"
+                WidthRequest="40" />
+        </HorizontalStackLayout>
+
+
+
+
+        <VerticalStackLayout Padding="20" Spacing="15">
+         
+
+            <HorizontalStackLayout Spacing="10">
+                <Entry x:Name="SearchEntry" Placeholder="例如：1123" Keyboard="Numeric" FontSize="22" />
+                <Button Text="清除"
+                        FontSize="16"
+                        BackgroundColor="#E57373"
+                        TextColor="White"
+                        Clicked="OnClearClicked" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="搜尋模擬"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    BackgroundColor="#2196F3"
+                    TextColor="White"
+                    Clicked="OnSearchClicked" />
+
+
+
+                <Button Text="搜尋手動"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        BackgroundColor="#FF9800"
+                        TextColor="White"
+                        Clicked="OnSearchManualClicked" />
+            </HorizontalStackLayout>
+            <Frame Margin="10"
+                   Padding="10"
+                   BackgroundColor="#FFFCE0"
+                   BorderColor="DarkGray"
+                   CornerRadius="12"
+                   HasShadow="True">
+
+                <Label x:Name="TotalMatchesLabel"
+                       Text="尚未有任何資料"
+                       FontSize="18"
+                       TextColor="Black"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+            </Frame>
+
+            <ScrollView>
+                <VerticalStackLayout Padding="5" Spacing="20">
+                    <CollectionView x:Name="ResultsCollectionView"
+                                    HeightRequest="400">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BorderColor="#cccccc" CornerRadius="10" Padding="10" Margin="5" HorizontalOptions="FillAndExpand">
+                                    <Label FontSize="22">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding DisplayText}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </ScrollView>
+
+            <Entry x:Name="dummyEntry" IsVisible="False" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,18 @@
+<Shell
+    x:Class="NumberSearchApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:NumberSearchApp"
+    Shell.FlyoutBehavior="Flyout"
+    Title="NumberSearchApp">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+    <!-- 註冊登入頁路由，但不放在主頁面列表裡 -->
+    <ShellContent
+        Route="LoginPage"
+        ContentTemplate="{DataTemplate local:LoginPage}" />
+</Shell>

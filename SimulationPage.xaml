@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NumberSearchApp.SimulationPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <Label Text="模擬" FontSize="24" HorizontalOptions="Center" />
+
+            <!-- 模擬按鈕 -->
+            <Button Text="開始模擬" Clicked="OnSimulateClicked" />
+
+            <!-- 手動輸入區塊 -->
+            <HorizontalStackLayout Spacing="10">
+                <Entry x:Name="manualInputEntry"
+                       Placeholder="手動輸入牌局"
+                       Keyboard="Numeric"
+                       FontSize="18"
+                       HorizontalOptions="FillAndExpand" />
+                <Button Text="清除" Clicked="OnClearManualInputClicked" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="儲存手動牌局" Clicked="OnSaveManualRecordClicked" />
+                <Button Text="查看手動紀錄" Clicked="OnShowManualRecordsClicked" />
+            </HorizontalStackLayout>
+
+            <!-- 顯示最後模擬結果 -->
+            <Label x:Name="recordLabel"
+                   Text="紀錄："
+                   FontSize="16"
+                   LineBreakMode="WordWrap" />
+
+            <!-- 顯示模擬詳細資料 -->
+            <Label x:Name="detailLabel"
+                   Text="詳細資料："
+                   FontSize="14"
+                   LineBreakMode="WordWrap" />
+
+            <!-- 顯示手動記錄 -->
+            <Label x:Name="manualRecordsLabel"
+                   Text="手動紀錄："
+                   FontSize="14"
+                   LineBreakMode="WordWrap" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

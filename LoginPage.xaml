@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NumberSearchApp.LoginPage"
+             BackgroundColor="#121212"
+             Title="登入">
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20">
+
+            <!-- 標題 -->
+            <Label Text="全國交友網 - www.meet123.com"
+               FontSize="26"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               TextColor="#FFD700" />
+
+            <!-- 帳號 -->
+            <Label Text="帳號" TextColor="#AAAAAA"/>
+            <Entry x:Name="accountEntry"
+                   Text="aa"
+               Placeholder="請輸入帳號"
+               PlaceholderColor="#666666"
+               TextColor="White"
+               BackgroundColor="#1E1E1E" />
+
+            <!-- 帳號錯誤提示 -->
+            <Label Text="您上月份會員會未繳暫停資格"
+                   TextColor="#FF6F61"
+                   FontSize="14"
+                   Margin="0,5,0,0" />
+
+            <!-- 帳號錯誤提示 -->
+            <Label x:Name="accountErrorLabel"
+                     Text="帳號輸入錯誤"
+                     TextColor="#FF6F61"
+                     FontSize="14"
+                     IsVisible="False" />
+
+
+
+            <!-- 密碼 -->
+            <Label Text="密碼 (六位數字)" TextColor="#AAAAAA"/>
+            <Entry x:Name="passwordEntry"
+               Placeholder="請輸入密碼"
+               PlaceholderColor="#666666"
+               TextColor="White"
+               BackgroundColor="#1E1E1E"
+               IsPassword="True" 
+               Keyboard="Numeric"/>
+
+            <!-- 登入按鈕 -->
+            <Button Text="登入"
+                Clicked="OnLoginClicked"
+                BackgroundColor="#FFD700"
+                TextColor="#121212"
+                CornerRadius="10"
+                FontAttributes="Bold"
+                Padding="10,5"/>
+
+            <!-- 美女圖片 -->
+            <Image Source="girl_banner.jpg"
+                   Aspect="AspectFill"
+                   HeightRequest="180"
+                   Margin="0,20,0,0"
+                   HorizontalOptions="Center"
+                   VerticalOptions="End" />
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
