@@ -239,6 +239,16 @@ namespace NumberSearchApp
             await Navigation.PushAsync(new SimulationPage());
         }
 
+        private async void OnNavigateToInputPanelClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new InputPanel());
+        }
+
+        private async void OnNavigateToProfitPageClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ProfitPage());
+        }
+
 
         private async void OnSearchManualClicked(object sender, EventArgs e)
         {
@@ -298,6 +308,9 @@ namespace NumberSearchApp
             // 導回登入頁
             Application.Current.MainPage = new LoginPage();
         }
+
+       
+
 
     }
 

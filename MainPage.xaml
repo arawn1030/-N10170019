@@ -5,19 +5,19 @@
 
     <Grid>
 
-        <!-- 上方兩個並排的按鈕 -->
+        <!-- 上方並排的按鈕 -->
         <HorizontalStackLayout HorizontalOptions="End"
                            VerticalOptions="Start"
                            Padding="10"
                            Spacing="10"
                            ZIndex="1">
-            <Button Text="出"
+            <Button Text="登出"
                 FontAttributes="Bold"
-                FontSize="16"
+                FontSize="18"
                 BackgroundColor="#9E9E9E"
                 TextColor="White"
                 Clicked="OnLogoutClicked"
-                WidthRequest="40" />
+                WidthRequest="80" />
 
             <Button Text="3"
                 FontAttributes="Bold"
@@ -26,6 +26,27 @@
                 TextColor="White"
                 Clicked="OnGoToSimulationClicked"
                 WidthRequest="40" />
+
+            <Button Text="4"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    BackgroundColor="#FF7043"
+                    TextColor="White"
+                    Clicked="OnNavigateToInputPanelClicked"
+                    WidthRequest="40"/>
+
+            <Button Text="5"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    BackgroundColor="#26A69A"
+                    TextColor="White"
+                    Clicked="OnNavigateToProfitPageClicked"
+                    WidthRequest="40"/>
+
+
+
+
+
         </HorizontalStackLayout>
 
 

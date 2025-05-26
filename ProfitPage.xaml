@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NumberSearchApp.ProfitPage"
+             Title="獲利分析">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="本金：" FontSize="18"/>
+            <Entry x:Name="CapitalEntry" Placeholder="輸入本金" Keyboard="Numeric"/>
+
+            <Label Text="每局壓注金額：" FontSize="18"/>
+            <Entry x:Name="BetEntry" Placeholder="輸入每局壓注金額" Keyboard="Numeric"/>
+
+            <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                <Label Text="第一注固定勝利" VerticalOptions="Center"/>
+                <Switch x:Name="SwitchFirstWin" IsToggled="True" />
+            </StackLayout>
+
+
+            <Button Text="平注打法分析" Clicked="OnFlatBetClicked" BackgroundColor="LightBlue"/>
+            <Button Text="馬丁格爾打法分析" Clicked="OnMartingaleClicked" BackgroundColor="LightCoral"/>
+
+            <Label x:Name="ResultLabel" FontSize="18" TextColor="Black" LineBreakMode="WordWrap"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
