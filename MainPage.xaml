@@ -52,8 +52,9 @@
 
 
 
-        <VerticalStackLayout Padding="20" Spacing="15">
-         
+        <VerticalStackLayout Padding="20" Spacing="15" Margin="0,80,0,0">
+
+
 
             <HorizontalStackLayout Spacing="10">
                 <Entry x:Name="SearchEntry" Placeholder="例如：1123" Keyboard="Numeric" FontSize="22" />
