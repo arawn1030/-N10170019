@@ -8,7 +8,7 @@
         <VerticalStackLayout Padding="30" Spacing="20">
 
             <!-- 標題 -->
-            <Label Text="全國交友網 - www.meet123.com"
+            <Label Text="博弈數據分析助手 App"
                FontSize="26"
                FontAttributes="Bold"
                HorizontalOptions="Center"
@@ -24,7 +24,7 @@
                BackgroundColor="#1E1E1E" />
 
             <!-- 帳號錯誤提示 -->
-            <Label Text="您上月份會員會未繳暫停資格"
+            <Label Text="您帳號已輸入"
                    TextColor="#FF6F61"
                    FontSize="14"
                    Margin="0,5,0,0" />
@@ -58,7 +58,7 @@
                 Padding="10,5"/>
 
             <!-- 美女圖片 -->
-            <Image Source="girl_banner.jpg"
+            <Image Source="banner.jpg"
                    Aspect="AspectFill"
                    HeightRequest="180"
                    Margin="0,20,0,0"

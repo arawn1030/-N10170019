@@ -31,13 +31,15 @@ namespace NumberSearchApp
                 // 嘗試清理資料中無效的紀錄（例如非純數字或破損 JSON）
                 await CleanInvalidBaccaratDataAsync();
 
-                // 從內建 Resource 載入預設資料
+                // 載入 Resources/Raw/baccaratData.json 預設資料
                 using var stream = await FileSystem.OpenAppPackageFileAsync("baccaratData.json");
                 using var reader = new StreamReader(stream);
                 string defaultJson = await reader.ReadToEndAsync();
                 var defaultData = JsonSerializer.Deserialize<BaccaratData>(defaultJson);
 
                 var allData = new List<string>();
+
+                // 加入預設資料中的 BaccaratHistory
                 if (defaultData?.BaccaratHistory != null)
                     allData.AddRange(defaultData.BaccaratHistory);
 
@@ -51,7 +53,7 @@ namespace NumberSearchApp
                     if (customData?.BaccaratHistory != null)
                         allData.AddRange(customData.BaccaratHistory);
 
-                    // ★ 新增手動資料區塊
+                    // 載入手動輸入的紀錄，過濾空白與非數字
                     if (customData?.ManualHistory != null)
                         manualHistory = customData.ManualHistory
                             .Where(s => !string.IsNullOrWhiteSpace(s) && s.All(char.IsDigit))
@@ -203,29 +205,13 @@ namespace NumberSearchApp
             // 收起鍵盤
             SearchEntry.Unfocus();
 
-#if ANDROID
-    try
-    {
-        var context = Platform.CurrentActivity;
-        var inputMethodManager = context?.GetSystemService(Android.Content.Context.InputMethodService) 
-                                as Android.Views.InputMethods.InputMethodManager;
 
-        var view = context?.CurrentFocus;
-        if (view != null && inputMethodManager != null)
-        {
-            inputMethodManager.HideSoftInputFromWindow(view.WindowToken, Android.Views.InputMethods.HideSoftInputFlags.None);
-        }
-    }
-    catch (Exception ex)
-    {
-        System.Diagnostics.Debug.WriteLine($"收鍵盤失敗：{ex.Message}");
-    }
-#endif
 
 
 
         }
 
+        // 清除搜尋欄位與結果
         private void OnClearClicked(object sender, EventArgs e)
         {
             SearchEntry.Text = string.Empty;
@@ -234,26 +220,31 @@ namespace NumberSearchApp
             SearchEntry.Focus(); // 讓游標回到輸入欄
         }
 
+        // 導航到模擬頁面
         private async void OnGoToSimulationClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SimulationPage());
         }
 
+        // 導航到手動輸入頁面
         private async void OnNavigateToInputPanelClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new InputPanel());
         }
 
+        // 導航到獲利分析頁面
         private async void OnNavigateToProfitPageClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ProfitPage());
         }
 
-
+        // 搜尋手動輸入的資料（manualHistory）
         private async void OnSearchManualClicked(object sender, EventArgs e)
         {
             await SearchDataAsync(manualHistory, "手動紀錄");
         }
+
+        // 共用搜尋邏輯：搜尋指定資料集，統計出現後續 12 碼
         private async Task SearchDataAsync(List<string> sourceData, string label)
         {
             string searchValue = SearchEntry.Text?.Trim();
@@ -303,6 +294,7 @@ namespace NumberSearchApp
             SearchEntry.CursorPosition = 0;
         }
 
+        // 登出並回到登入頁
         private void OnLogoutClicked(object sender, EventArgs e)
         {
             // 導回登入頁
@@ -314,14 +306,14 @@ namespace NumberSearchApp
 
     }
 
-
+    // 用於 JSON 資料結構對應
     public class BaccaratData
     {
         public List<string> BaccaratHistory { get; set; } = new();
         public List<string> ManualHistory { get; set; } = new();
     }
 
-
+    // 用於顯示搜尋結果的資料模型
     public class SearchResult
     {
         public string RawDigits { get; set; }  // 原始6碼
